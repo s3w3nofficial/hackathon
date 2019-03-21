@@ -1,0 +1,202 @@
+﻿@page "/eventlist"
+@using Microsoft.AspNetCore.Components
+@using Web.Client.Services
+@using Web.Shared.Models
+
+<div class="container-fluid" id="main">
+
+    <div id="nadpis">
+
+        <button type="button" class="sipka"> <i class="fas fa-arrow-left"></i></button>
+        <div id="dateSpan">
+            @($"{DateTime.Today.Day}.{DateTime.Today.Month}") - @($"{DateTime.Today.Day + 7}.{DateTime.Today.Month}")
+        </div> <button type="button" class="sipka" style="float: right"><i class="fas fa-arrow-right"></i> </button>
+        </div>
+        <div class="row">
+            <div class="days">
+                <div class="nazevDnu">Pondělí</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Monday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+            <div class="days">
+                <div class="nazevDnu even">Úterý</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Tuesday))
+        {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                    {
+                        <span>Cely Den</span>
+                    }
+                    else
+                    {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                    }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+        }
+            </div>
+            <div class="days">
+                <div class="nazevDnu">Středa</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Wednesday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+            <div class="days">
+                <div class="nazevDnu even">Čtvrtek</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Thursday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+            <div class="days">
+                <div class="nazevDnu">Pátek</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Friday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+            <div class="days">
+                <div class="nazevDnu even">Sobota</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Saturday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+            <div class="days" style="border-right: solid 1px #cccccc">
+                <div class="nazevDnu">Neděle</div>
+                @foreach (var eve in Events.Where(e => e.place.start.DayOfWeek == DayOfWeek.Sunday))
+            {
+                <div class="akce">
+                    <h6>
+                        @if (eve.place.start.Hour == 0)
+                        {
+                        <span>Cely Den</span>
+                        }
+                        else
+                        {
+                        @($"{eve.place.start.Hour} : {eve.place.start.Minute}")
+                        }
+                    </h6>
+                    <br>
+                    <h5>@eve.name</h5>
+                </div>
+            }
+            </div>
+        </div>
+
+    </div>
+
+
+    <br />
+    <br />
+    <br />
+    <h1>List Udalostí</h1>
+
+    @foreach (var eve in Events)
+    {
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-4">
+                    <h4>@eve.place.start</h4>
+                    <h4>@eve.place.end</h4>
+                    <h4>@eve.place.name</h4>
+                </div>
+                <div class="col-8">
+                    <h4 class="card-title">@eve.name</h4>
+                    <p class="card-text">@eve.description</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    @functions
+{
+    [Inject]
+    public AppState State { get; set; }
+    public IEnumerable<Event> Events = new List<Event>();
+
+    protected override void OnInit()
+    {
+        Events = State.Events;
+        State.UpdateEvents();
+        State.OnEventsUpdated += EventsUpdated;
+    }
+
+    public async void EventsUpdated()
+    {
+        Events = State.Events;
+        StateHasChanged();
+    }
+    }

@@ -1,0 +1,101 @@
+﻿body {
+    background: #efefef;
+
+}
+
+#main {
+    height: 700px;
+    width: 100%;
+    background: #efefef;
+}
+
+#dateSpan {
+    margin-top: 8px !important;
+    width: 70%;
+    margin: 0px;
+    display: inline-block;
+}
+
+#nadpis {
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    background: #efefef;
+}
+
+.sipka {
+    width: 30px;
+    height: 100%;
+    float: left;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+.days {
+    border: solid 1px #cccccc;
+    border-right: none;
+    height: 100%;
+    width: 14.2857142857% !important;
+    margin: 0px;
+    padding: 0px;
+    background: white;
+}
+
+#main > .row {
+    height: 90%;
+}
+
+.nazevDnu {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+    background: #00bcd4;
+    color: ghostwhite;
+    margin: 0px;
+    padding: 0px;
+    border-bottom: solid 1px #cccccc;
+}
+
+.even {
+    background: white;
+    color: darkslategrey;
+}
+
+.akce {
+    height: auto;
+    width: auto;
+    background: #efefef;
+    padding: 5%;
+    text-align: center;
+    border-bottom: solid 1px #cccccc;
+    
+}
+
+.btn{
+    border-color: #00bcd4 !important;
+    border: solid 3px #00bcd4 !important;
+    color: #00bcd4 !important;
+    border-radius: 5px !important;
+}
+.form-inline{
+    float: right !important;
+    display: inline-block;
+    position: relative;
+    right: 0px;
+}
+#formFix{
+    float: right;
+
+    
+}
+
+
