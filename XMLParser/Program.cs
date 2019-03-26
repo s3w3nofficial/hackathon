@@ -93,7 +93,9 @@ namespace XMLParser
                             start = start,
                             end = end,
                             name = eve.Descendants("place").First().Element("name_place").Value
-                        }
+                        },
+                        photogalery = eve.Descendants("photogalery").Select(i => i.Element("image_thumb").Value)
+
                     });
                 } catch { }
             }

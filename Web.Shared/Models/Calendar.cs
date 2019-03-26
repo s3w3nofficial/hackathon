@@ -10,6 +10,7 @@ namespace Web.Shared.Models
         public string anotation { get; set; }
         public string description { get; set; }
         public Place place { get; set; }
+        public IEnumerable<string> photogalery { get; set; }
     }
 
     public class Place
